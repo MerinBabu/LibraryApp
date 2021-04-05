@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+        Library Application
+    </title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    <link href="/css/styles.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+</head>
+
+<body>
+    <header class="navbar navbar-bright navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a href="/" class="navbar-brand">Home</a>
+            </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <%for(let i=0;i<nav.length;i++){%>
+                        <li>
+                            <a href="<%=nav[i].link%>">
+                                <%=nav[i].name%>
+                            </a>
+                        </li>
+                        <%}%>
+                </ul>
+                <ul class="nav navbar-right navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+                        <ul class="dropdown-menu" style="padding:12px;">
+                            <form class="form-inline">
+                                <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+                            </form>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1>
+                        <%=title%>
+                            <p class="lead"></p>
+                    </h1>
+                </div>
+                <div class="col-md-5">
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /cont -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="top-spacer"> </div>
+                </div>
+            </div>
+        </div>
+        <!-- /cont -->
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="panel">
+                    <div class="panel-body">
+
+
+
+                        <!-- stories -->
+
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-3">
+                                <form action="" onsubmit=" return validate_signup()" class="form-margin">
+                                    <h1 id="sign-in">Sign up </h1>
+                                    <br>
+
+                                    <p>If you already have an account, login <a id="login-link-signup" href="login.ejs">here</a>.</p>
+                                    <div class="form-group">
+                                        <label>User Type<span class="text-danger">*</span></label>
+                                        <label for="error" id="errorusertype"></label>
+                                        <select class="form-control" name="type" id="type">
+                                            <option value="student" selected>Student</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label>First Name<span class="text-danger">*</span></label>
+                                        <label for="error" id="errorfirstname"></label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" required>
+
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label>Last Name<span class="text-danger">*</span></label>
+                                        <label for="error" id="errorlastname"></label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label for="exampleInputEmail1">Email address<span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+                                        <label class="error" for="error" id="erroremail"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Phone number<span class="text-danger">*</span></label>
+                                        <input type="phonenumber" class="form-control" id="phoneno" required>
+                                        <label class="error" for="error" id="errorphoneno"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password<span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control" id="pwd" required>
+                                        <meter max="8" id="password-strength-meter"></meter>
+                                        <p id="password-strength-text"></p>
+                                        <label class="error" class="error" for="error" id="errorpwd"></label>
+                                        <small id="emailHelp" class="form-text text-muted">Password must be minimum 8 characters, at least one uppercase, and one lower case, must contain at least one number</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Reenter password<span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control" id="repwd" required>
+                                        <label for="error" id="errorrepwd"></label>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                        <label class="form-check-label" for="exampleCheck1">Agree to our terms and policies <span class="text-danger">*</span></label>
+                                    </div>
+                                    <br>
+
+                                    <button class="btn btn-primary btn-block btnsubmit">Sign Up</button>
+                                    <br>
+                                    <br>
+
+                                </form>
+
+
+                            </div>
+                            <div class="col-lg-4"></div>
+                        </div>
+
+
+                        <!--/stories-->
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!--/col-12-->
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="container" id="footer">
+        <div class="row">
+            <div class="col col-sm-12">
+
+                <h1>Follow Us</h1>
+                <div class="btn-group">
+                    <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
+                    <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+                    <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <hr>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="list-inline">
+                        <li><i class="icon-facebook icon-2x"></i></li>
+                        <li><i class="icon-twitter icon-2x"></i></li>
+                        <li><i class="icon-google-plus icon-2x"></i></li>
+                        <li><i class="icon-pinterest icon-2x"></i></li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-6">
+                    <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- script references -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/authvalidate.js"></script>
+</body>
+
+</html>
