@@ -36,15 +36,4 @@ app.get("/", function(req, res) { //first request(here default request) and its 
     });
 
 });
-
-// app.get("/books", function(req, res) {    //first method for books(or any) router
-
-//     res.render("books", {
-
-//         nav: [{ link: "/books", name: "Books" }, { link: "/author", name: "Author" }],
-//         title: "Library"
-//     });
-// });
-
-
 app.listen(port, () => { console.log("Server ready at " + port); });

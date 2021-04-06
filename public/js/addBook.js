@@ -10,8 +10,7 @@ genre.addEventListener("keyup", genrevalidation);
 bookname.addEventListener("focusout", booknamevalidation);
 authorname.addEventListener("focusout", authornamevalidation);
 genre.addEventListener("focusout", genrevalidation);
-// let frmaddbook=document.getElementById("frmaddbook");
-// frmaddbook.addEventListener("submit",validate);
+
 
 
 function booknamevalidation() {

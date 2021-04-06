@@ -6,12 +6,9 @@ let award = document.getElementById("award");
 let erroraward = document.getElementById("erroraward");
 authorname.addEventListener("keyup", authornamevalidation);
 bestbookname.addEventListener("keyup", bestbooknamevalidation);
-// award.addEventListener("keyup", awardvalidation);
 authorname.addEventListener("focusout", authornamevalidation);
 bestbookname.addEventListener("focusout", bestbooknamevalidation);
-// award.addEventListener("focusout", awardvalidation);
-// let frmaddauthor = document.getElementById("frmaddauthor");
-// frmaddauthor.addEventListener("submit", validate);
+
 
 
 function authornamevalidation() {
@@ -38,17 +35,6 @@ function bestbooknamevalidation() {
     }
 }
 
-// function awardvalidation() {
-//     if (award.value.trim() == "") {
-//         erroraward.innerHTML = "Awards cannot be Empty";
-//         award.style.border = "1px solid red";
-//         return false;
-//     } else {
-//         erroraward.innerHTML = "";
-//         award.style.border = "";
-//         return true;
-//     }
-// }
 
 //image upload
 let fileTag = document.getElementById("filetag");
@@ -74,11 +60,11 @@ function changeImage(input) {
 function validate_addAuthor() {
     // Basic Validation 
     if (authornamevalidation() && bestbooknamevalidation()) {
-        console.log("subkitted");
+        console.log("submitted");
         return true;
 
     } else
-        console.log("no");
+        console.log("not submitted");
     return false;
 
 }
